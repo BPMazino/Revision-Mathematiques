@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{minted}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remarque}
+
+\newtheorem*{notation}{Notation}
+
+
+\title{Logique propositionnelle}
+\author{Mazino }
+\date{July 2022}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Syntaxe}
+
+\begin{definition}[Proposition]
+On appelle \emph{proposition}, ou \emph{variable propositionnelle}, est un symbole qui a peut-être soit vrai soit faux. 
+\end{definition}
+
+\begin{definition}[Ensemble des propositions]
+On appelle $E_P$ un ensemble infini ou fini et dénombrable de propositions. 
+\end{definition}
+
+
+\begin{definition}[Formule propositionnelle]
+Informellement une \emph{formule propositionnelle} est une combinaison de \emph{connecteurs logiques} et de  \emph{variables propositionnelle}.\\
+Plus formellement on peut définir une  \emph{formule propositionnelle} récursivement.\\
+Soient $P$ une proposition, $\varphi, \psi$ deux formules.\\
+Soit $P \in E_P$ une proposition. \\
+$\neg \varphi$ est une formule.\\
+$(\varphi \land \psi)$ et $(\varphi \lor \psi)$ sont des formules.
+\end{definition}
+
+\begin{definition}[Connecteur Logique]
+On appelle \emph{connecteur logique} un symbole reliant deux formules.\\ 
+On utilisera les éléments de l'ensemble suivant comme connecteur logique : $\{\neg, \land, \lor  \}$.\\
+Respectivement symbole de \emph{négation}, de \emph{disjonction}, de \emph{conjonction}.
+\end{definition}
+
+\begin{remark}
+La négation est un connecteur unaire et les autres sont des connecteurs binaires.
+\end{remark}
+
+\begin{remark}
+A partir de ceux-ci on pourra définir d'autres connecteurs logiques tels que $\rightarrow$ ou $\leftrightarrow$.\\
+Respectivement d'\emph{implication} et d'\emph{équivalence}.
+\end{remark}
+
+
+\begin{minted}{ocaml}
+type formule = Proposition of string 
+               | Not of formule
+               | And of formule * formule 
+               | Or of formule * formule
+;;
+\end{minted}
+
+\end{document}
